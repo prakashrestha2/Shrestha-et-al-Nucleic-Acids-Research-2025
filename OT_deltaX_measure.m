@@ -1,4 +1,4 @@
-function RESULT = OT_DeltaX_Analysis(fx_TEFVP)
+function RESULT = OT_deltaX_measure(fx_TEFVP)
 %% RESULT is a table of:
 % Timepoint, mean of pre-tran, mean of post-tran, ...
 %            numb of pre-tran, numb of post-tran, ...
@@ -6,16 +6,8 @@ function RESULT = OT_DeltaX_Analysis(fx_TEFVP)
 %            Voltage when the transition happen, ...
 %            mean-force of pre-tran,  mean-f of pre-tran, ...
 %            delta x i.e. dx
-%
-%%%031518 Version: Modification%%%%%%%%%%%%%%%%%%%%%%%%%
-% Removed the "1 sec" Threadhold and changed to 21 ms
-% Use the new and improve Plot_ReScale Function: Linear or Sigma
-% Fixed the offset of detection location
-%%%031618 Version: Modification%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fixed the issue with the short last voltage
-%%%031618 Version: Modification%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Data Segmentation base on Voltage
+%% Data Segmentation based on Voltage
 input = fx_TEFVP;
 Volt_Inx = find(logical(diff(input(:, 4))) == 1);
 Volt_Inx = [0; Volt_Inx; length(input(:, 4))];
